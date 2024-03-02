@@ -34,7 +34,7 @@ import org.springframework.web.context.request.NativeWebRequest;
  * @author Rossen Stoyanchev
  * @since 3.1
  */
-public class HandlerMethodReturnValueHandlerComposite implements HandlerMethodReturnValueHandler {
+public class  HandlerMethodReturnValueHandlerComposite implements HandlerMethodReturnValueHandler {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 

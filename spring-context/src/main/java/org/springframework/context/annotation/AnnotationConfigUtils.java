@@ -56,6 +56,9 @@ import org.springframework.util.ClassUtils;
  * @see CommonAnnotationBeanPostProcessor
  * @see org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
  * @see org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor
+ *
+ *
+ * 允许方便地注册 基于注释的配置的公共BeanPostProcessor和 定义。BeanFactoryPostProcessor还注册一个通用的 AutowireCandidateResolver.
  */
 public abstract class AnnotationConfigUtils {
 

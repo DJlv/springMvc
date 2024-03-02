@@ -38,6 +38,8 @@ public final class BeanDefinitionBuilder {
 
 	/**
 	 * Create a new {@code BeanDefinitionBuilder} used to construct a {@link GenericBeanDefinition}.
+	 *
+	 * 创建一个新的BeanDefinitionBuilder用于构造GenericBeanDefinition.
 	 */
 	public static BeanDefinitionBuilder genericBeanDefinition() {
 		return new BeanDefinitionBuilder(new GenericBeanDefinition());
@@ -46,6 +48,8 @@ public final class BeanDefinitionBuilder {
 	/**
 	 * Create a new {@code BeanDefinitionBuilder} used to construct a {@link GenericBeanDefinition}.
 	 * @param beanClassName the class name for the bean that the definition is being created for
+	 *
+	 * 创建一个新的BeanDefinitionBuilder用于构造GenericBeanDefinition.
 	 */
 	public static BeanDefinitionBuilder genericBeanDefinition(String beanClassName) {
 		BeanDefinitionBuilder builder = new BeanDefinitionBuilder(new GenericBeanDefinition());
@@ -153,6 +157,8 @@ public final class BeanDefinitionBuilder {
 
 	/**
 	 * Validate and return the created BeanDefinition object.
+	 *
+	 * 验证并返回创建的 BeanDefinition 对象。
 	 */
 	public AbstractBeanDefinition getBeanDefinition() {
 		this.beanDefinition.validate();

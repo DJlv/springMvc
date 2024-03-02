@@ -31,6 +31,15 @@ import org.springframework.lang.Nullable;
  * caching a {@link MetadataReader} instance per Spring {@link Resource} handle
  * (i.e. per ".class" file).
  *
+ *
+ * CachingMetadataReaderFactory是一个用于缓存元数据读取器的工厂类。它是Spring Framework中的一个类，用于提高元数据读取的性能。
+ *
+ * 在Spring应用程序中，当需要读取类的元数据时，通常需要使用MetadataReaderFactory接口。而CachingMetadataReaderFactory是MetadataReaderFactory接口的一个实现类，它通过缓存已读取的元数据来减少重复的IO操作，从而提高性能。
+ *
+ * CachingMetadataReaderFactory内部使用了一个元数据读取器缓存，可以是ConcurrentMap类型或其他类型的缓存。当需要获取某个资源的元数据读取器时，首先会检查缓存中是否已经存在该资源的元数据读取器。如果存在，则直接从缓存中获取；如果不存在，则调用父类的getMetadataReader方法获取元数据读取器，并将其放入缓存中。
+ *
+ * 通过使用CachingMetadataReaderFactory，可以避免重复的IO操作，提高元数据读取的效率，特别是在需要频繁读取元数据的场景下，可以显著提升应用程序的性能。
+ *
  * @author Juergen Hoeller
  * @author Costin Leau
  * @since 2.5
@@ -114,6 +123,17 @@ public class CachingMetadataReaderFactory extends SimpleMetadataReaderFactory {
 	}
 
 
+	/**
+	 * 这段代码是一个方法，用于获取给定资源的元数据读取器。
+	 * 它首先检查元数据读取器缓存是否是ConcurrentMap类型，如果是，则直接从缓存中获取元数据读取器。
+	 * 如果缓存中没有找到元数据读取器，则调用父类的getMetadataReader方法获取元数据读取器，并将其放入缓存中。
+	 * 如果元数据读取器缓存不是ConcurrentMap类型，则使用同步块来确保线程安全，然后执行相同的逻辑。
+	 * 如果元数据读取器缓存为null，则直接调用父类的getMetadataReader方法获取元数据读取器。
+	 * 最后，返回获取到的元数据读取器。
+	 * @param resource the resource (pointing to a ".class" file)
+	 * @return
+	 * @throws IOException
+	 */
 	@Override
 	public MetadataReader getMetadataReader(Resource resource) throws IOException {
 		if (this.metadataReaderCache instanceof ConcurrentMap) {

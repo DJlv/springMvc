@@ -14,6 +14,7 @@ public class Main {
 		}
 
 		System.out.println(context.getBean(Bean2.class).getBean1());
+		System.out.println("skdjfksd");
 	}
 
 	@Configuration

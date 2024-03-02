@@ -203,6 +203,8 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	/**
 	 * Specify an id for serialization purposes, allowing this BeanFactory to be
 	 * deserialized from this id back into the BeanFactory object, if needed.
+	 *
+	 * 指定用于序列化目的的 id，如果需要，允许将此 BeanFactory 从此 id 反序列化回 BeanFactory 对象。
 	 */
 	public void setSerializationId(@Nullable String serializationId) {
 		if (serializationId != null) {
@@ -218,6 +220,8 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	 * Return an id for serialization purposes, if specified, allowing this BeanFactory
 	 * to be deserialized from this id back into the BeanFactory object, if needed.
 	 * @since 4.1.2
+	 *
+	 * 返回用于序列化目的的 id（如果指定），并允许将此 BeanFactory 从此 id 反序列化回 BeanFactory 对象（如果需要）。
 	 */
 	@Nullable
 	public String getSerializationId() {
@@ -230,6 +234,9 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	 * If not, an exception will be thrown. This also applies to overriding aliases.
 	 * <p>Default is "true".
 	 * @see #registerBeanDefinition
+	 *
+	 * 设置是否允许通过注册具有相同名称的不同定义来覆盖 bean 定义，自动替换前者。如果没有，将会抛出异常。这也适用于覆盖别名。
+	 * 默认值为“true”。
 	 */
 	public void setAllowBeanDefinitionOverriding(boolean allowBeanDefinitionOverriding) {
 		this.allowBeanDefinitionOverriding = allowBeanDefinitionOverriding;
@@ -239,6 +246,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	 * Return whether it should be allowed to override bean definitions by registering
 	 * a different definition with the same name, automatically replacing the former.
 	 * @since 4.1.2
+	 * 返回是否允许通过注册具有相同名称的不同定义来覆盖 bean 定义，自动替换前者。
 	 */
 	public boolean isAllowBeanDefinitionOverriding() {
 		return this.allowBeanDefinitionOverriding;
@@ -278,8 +286,9 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	}
 
 	/**
-	 * Return the dependency comparator for this BeanFactory (may be {@code null}.
+	 * Return the dependency comparator for this BeanFactory may be {@code null}.
 	 * @since 4.0
+	 * 返回此 BeanFactory 的依赖比较器（可能是null）
 	 */
 	@Nullable
 	public Comparator<Object> getDependencyComparator() {
@@ -290,6 +299,10 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	 * Set a custom autowire candidate resolver for this BeanFactory to use
 	 * when deciding whether a bean definition should be considered as a
 	 * candidate for autowiring.
+	 *
+	 * 为此BeanFactory设置要使用的自定义自动连线候选解析程序
+	 * 在决定是否应将bean定义视为
+	 * 自动布线的候选者。
 	 */
 	public void setAutowireCandidateResolver(AutowireCandidateResolver autowireCandidateResolver) {
 		Assert.notNull(autowireCandidateResolver, "AutowireCandidateResolver must not be null");
@@ -829,6 +842,10 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		return (this.configurationFrozen || super.isBeanEligibleForMetadataCaching(beanName));
 	}
 
+	/**
+	 * 准备好所有单例
+	 * @throws BeansException
+	 */
 	@Override
 	public void preInstantiateSingletons() throws BeansException {
 		if (logger.isTraceEnabled()) {
@@ -1036,6 +1053,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
 	/**
 	 * Only allows alias overriding if bean definition overriding is allowed.
+	 * 仅当允许覆盖 bean 定义时才允许覆盖别名。
 	 */
 	@Override
 	protected boolean allowAliasOverriding() {
@@ -1428,7 +1446,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	 * Called during autowiring for the specified bean.
 	 * @param beanName the name of the bean that is about to be wired
 	 * @param requiredType the actual type of bean to look for
-	 * (may be an array component type or collection element type)
+	 * may be an array component type or collection element type
 	 * @param descriptor the descriptor of the dependency to resolve
 	 * @return a Map of candidate names and candidate instances that match
 	 * the required type (never {@code null})
@@ -1970,7 +1988,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	/**
 	 * Separate inner class for avoiding a hard dependency on the {@code javax.inject} API.
 	 * Actual {@code javax.inject.Provider} implementation is nested here in order to make it
-	 * invisible for Graal's introspection of DefaultListableBeanFactory's nested classes.
+	 * invisible for Graals introspection of DefaultListableBeanFactory's nested classes.
 	 */
 	private class Jsr330Factory implements Serializable {
 

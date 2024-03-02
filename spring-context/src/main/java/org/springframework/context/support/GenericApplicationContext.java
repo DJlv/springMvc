@@ -300,6 +300,14 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 * bean factory and its contained beans with application context semantics
 	 * (autodetecting BeanFactoryPostProcessors, etc).
 	 * @return the internal bean factory (as DefaultListableBeanFactory)
+	 *
+	 *
+	 * 返回此上下文的底层bean工厂，
+	 * 可用于注册bean定义。
+	 * <p><b>注意：＜b＞您需要调用｛@link refresh（）｝来初始化
+	 * bean工厂及其包含的应用上下文语义bean
+	 * （自动检测BeanFactoryPostProcessors等）。
+	 * @返回内部bean工厂（作为DefaultListableBeanFactory）
 	 */
 	public final DefaultListableBeanFactory getDefaultListableBeanFactory() {
 		return this.beanFactory;
@@ -380,6 +388,16 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 * to be autowired, possibly simply the default constructor)
 	 * @param customizers one or more callbacks for customizing the factory's
 	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
+	 *
+	 *
+	 *
+	 *   从给定的bean类注册一个bean，可以选择自定义其
+	 * bean定义元数据（通常声明为lambda表达式）。
+	 * @param beanName bean的名称（可以是{@code null}）
+	 * @param beanClass bean的类（解析公共构造函数
+	 * 自动连接，可能只是默认构造函数）
+	 * @param自定义一个或多个回调，用于自定义工厂的
+	 * ｛@link BeanDefinition｝，例如设置惰性初始化或主标志
 	 * @since 5.0
 	 * @see #registerBean(String, Class, Supplier, BeanDefinitionCustomizer...)
 	 */

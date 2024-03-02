@@ -130,6 +130,12 @@ public class AnnotatedBeanDefinitionReader {
 	 * component class more than once has no additional effect.
 	 * @param componentClasses one or more component classes,
 	 * e.g. {@link Configuration @Configuration} classes
+	 *
+	 *  注册一个或多个要处理的组件类。
+	 * <p>对{@code register}的调用是幂等的；添加相同的
+	 * 组件类一次以上没有其他影响。
+	 * @param componentClasses一个或多个组件类，
+	 * 例如{@linkConfiguration@Configuration}类
 	 */
 	public void register(Class<?>... componentClasses) {
 		for (Class<?> componentClass : componentClasses) {
