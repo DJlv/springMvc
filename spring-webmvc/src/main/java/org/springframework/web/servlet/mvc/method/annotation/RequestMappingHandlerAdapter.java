@@ -556,6 +556,8 @@ public class RequestMappingHandlerAdapter extends AbstractHandlerMethodAdapter
 	}
 
 
+	/*	在设置了所有 Bean 属性后由 containing 调用 并满意 BeanFactoryAware 等。BeanFactoryApplicationContextAware
+	 */
 	@Override
 	public void afterPropertiesSet() {
 		// Do this first, it may add ResponseBody advice beans

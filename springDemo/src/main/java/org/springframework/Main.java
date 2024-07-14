@@ -7,14 +7,14 @@ import org.springframework.context.annotation.Configuration;
 public class Main {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context =
-				new AnnotationConfigApplicationContext(Config.class);
+				new AnnotationConfigApplicationContext(BeanConfigAll.class);
 
-		for (String name : context.getBeanDefinitionNames()) {
-			System.out.println(name);
-		}
-
-		System.out.println(context.getBean(Bean2.class).getBean1());
-		System.out.println("skdjfksd");
+//		for (String name : context.getBeanDefinitionNames()) {
+//			System.out.println(name);
+//		}
+//
+//		System.out.println(context.getBean(Bean2.class).getBean1());
+//		System.out.println("skdjfksd");
 	}
 
 	@Configuration

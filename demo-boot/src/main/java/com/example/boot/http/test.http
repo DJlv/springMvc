@@ -1,0 +1,12 @@
+http://localhost:9000/test1?name=111
+
+
+
+### Send POST request with json body
+POST https://ijhttp-examples.jetbrains.com/post
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}

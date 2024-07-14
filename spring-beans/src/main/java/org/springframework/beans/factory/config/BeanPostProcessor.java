@@ -40,6 +40,23 @@ import org.springframework.lang.Nullable;
  * @see ConfigurableBeanFactory#addBeanPostProcessor
  * @see BeanFactoryPostProcessor
  */
+
+/*
+* BeanPostProcessor 接口提供了两个方法：postProcessBeforeInitialization 和 postProcessAfterInitialization，
+* 分别在 Bean 初始化之前和之后执行。通过实现这些方法，可以插入自定义逻辑，对 Bean 进行修改、增强或监控。
+*
+* 以下是继承 BeanPostProcessor 接口的几个主要原因：
+* 自定义初始化逻辑：
+* 	在 Bean 初始化之前或之后执行特定的逻辑，例如设置默认值、验证配置、记录日志等。
+* AOP 代理：
+* 	Spring 的 AOP 功能就是通过 BeanPostProcessor 实现的。例如，AnnotationAwareAspectJAutoProxyCreator 是一个 BeanPostProcessor，它负责在 Bean 初始化之后创建代理对象。
+* 依赖注入后的处理：
+* 	在 Bean 的所有依赖注入完成后，进行一些额外的处理，例如检查依赖是否满足特定条件、修改依赖的属性等。
+* Bean 的增强：
+* 	对 Bean 进行增强，例如添加额外的功能、修改 Bean 的行为等。
+* 监控和度量：
+* 	在 Bean 初始化过程中收集度量信息，例如记录 Bean 的创建时间、初始化时间等。
+* */
 public interface BeanPostProcessor {
 
 	/**
