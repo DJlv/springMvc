@@ -996,7 +996,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
 		// Initialize conversion service for this context.
 		// 这段代码检查 Bean 工厂中是否包含名为 CONVERSION_SERVICE_BEAN_NAME 的 Bean，并且该 Bean 的类型是否匹配 ConversionService 类型。
-		//如果匹配，则将该 Bean 设置为 Bean 工厂的转换服务。
+		// 如果匹配，则将该 Bean 设置为 Bean 工厂的转换服务。
 		if (beanFactory.containsBean(CONVERSION_SERVICE_BEAN_NAME) &&
 				beanFactory.isTypeMatch(CONVERSION_SERVICE_BEAN_NAME, ConversionService.class)) {
 			beanFactory.setConversionService(
@@ -1007,14 +1007,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// (such as a PropertyPlaceholderConfigurer bean) registered any before:
 		// at this point, primarily for resolution in annotation attribute values.
 		// 这段代码检查 Bean 工厂是否已经有嵌入值解析器。
-		//如果没有，则添加一个默认的嵌入值解析器，该解析器使用环境变量来解析占位符。
+		// 如果没有，则添加一个默认的嵌入值解析器，该解析器使用环境变量来解析占位符。
 		if (!beanFactory.hasEmbeddedValueResolver()) {
 			beanFactory.addEmbeddedValueResolver(strVal -> getEnvironment().resolvePlaceholders(strVal));
 		}
 
 		// Initialize LoadTimeWeaverAware beans early to allow for registering their transformers early.
 		// 这段代码获取所有类型为 LoadTimeWeaverAware 的 Bean 名称。
-		//对于每个 Bean 名称，调用 getBean(weaverAwareName) 方法来初始化这些 Bean。
+		// 对于每个 Bean 名称，调用 getBean(weaverAwareName) 方法来初始化这些 Bean。
 		String[] weaverAwareNames = beanFactory.getBeanNamesForType(LoadTimeWeaverAware.class, false, false);
 		for (String weaverAwareName : weaverAwareNames) {
 			getBean(weaverAwareName);
